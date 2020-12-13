@@ -30,6 +30,7 @@ group :development do
   gem 'pry-doc'
   gem 'rubocop'
   gem 'rails_best_practices'
+  gem 'spring-commands-rspec'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
