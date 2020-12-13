@@ -13,7 +13,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'sorcery'
 
 group :development, :test do
+  gem 'rspec-rails', '~> 4.0.1'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails', '~> 4.10.0'
 end
 
 group :development do
