@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Tasks", type: :system do
   let(:user) { create(:user) }
+  let(:other_user) { create(:user) }
   let(:task) { create(:task, user: user) }
 
   describe 'ログイン前' do
@@ -46,6 +47,13 @@ RSpec.describe "Tasks", type: :system do
 
   describe 'ログイン後' do
     before { login_as(user) }
+
+  it '他のユーザーのタスク編集画面に遷移できない' do
+    other_user_task = create(:task, user: other_user)
+    visit edit_task_path(other_user_task)
+    expect(page).to have_content('Forbidden access.')
+    expect(current_path).to eq root_path
+  end
 
     describe 'タスクの新規作成' do
       context 'フォームの入力値が正常' do
